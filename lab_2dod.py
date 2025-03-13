@@ -32,21 +32,27 @@ def merge_sort(arr):
 
 def min_distance(free_sections, c):
     merge_sort(free_sections)
-    max_possible = (free_sections[-1] + free_sections[0]) // (c - 1)
+    left = 0
+    right = (free_sections[-1] + free_sections[0]) // 2
+    best_dist = 0
     co = 0
-    while max_possible >= 1:
-        a = 0
+    while left <= right:
         co += 1
+        mid = (left + right) // 2
+        a = 0
         counter = 1
         for j in range(1, len(free_sections)):
-            if free_sections[j] - free_sections[a] >= max_possible:
+
+            if free_sections[j] - free_sections[a] >= mid:
                 a = j
                 counter += 1
-        if counter < c:
-            max_possible -= 1
+        if counter >= c:
+            best_dist = mid
+            left = mid + 1
         else:
-            print(co)
-            return max_possible
+            right = mid - 1
+    print(co)
+    return best_dist
 
 
 print(min_distance(lst, 10000))
