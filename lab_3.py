@@ -1,11 +1,5 @@
 # B3 P3
-
-
-class BinaryTree:
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
+from lab3_tree import BinaryTree
 
 
 def binary_tree_diameter(tree: BinaryTree):
