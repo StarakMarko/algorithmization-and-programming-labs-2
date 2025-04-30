@@ -1,2 +1,4 @@
-# algorithmization-and-programming-labs-2
-repository on the subject of algorithmization and programming 2
+# Lab7
+## Варіант 3
+
+Створити клас структури даних Trie (префіксне дерево), який містить методи вставки слова, пошуку слова та пошуку префіксу. Реалізувати функцію на мові програмування Python, яка отримує список  стрічок `patterns`  і повертає об'єкт класу `Trie`
