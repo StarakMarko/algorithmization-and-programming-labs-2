@@ -69,17 +69,13 @@ class Trie:
         return words
 
 
-def build_trie(patterns):
+def build_trie(filename):
     trie = Trie()
 
-    for pattern in patterns:
-        trie.insert(pattern)
+    with open(filename, "r", encoding="utf-8") as f:
+        for line in f:
+            pattern = line.strip()
+            if pattern:
+                trie.insert(pattern)
+
     return trie
-
-
-patterns = ["cat", "car", "cart"]
-trie = build_trie(patterns)
-
-print(trie.search("cat"))
-print(trie.search("dog"))
-print(trie.starts_with("ca"))
