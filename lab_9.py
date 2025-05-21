@@ -5,9 +5,18 @@ def quick_sort(words):
     pivot = words[0]
     pivot_len = len(pivot)
 
-    left = [w for w in words[1:] if len(w) < pivot_len]
-    middle = [w for w in words if len(w) == pivot_len]
-    right = [w for w in words[1:] if len(w) > pivot_len]
+    left = []
+    right = []
+    for w in words[1:]:
+        if len(w) < pivot_len:
+            left.append(w)
+        if len(w) > pivot_len:
+            right.append(w)
+
+    middle = []
+    for w in words:
+        if len(w) == pivot_len:
+            middle.append(w)
 
     return quick_sort(left) + middle + quick_sort(right)
 
