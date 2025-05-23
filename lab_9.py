@@ -1,24 +1,21 @@
-def quick_sort(words):
-    if len(words) <= 1:
-        return words
+def counting_sort(words):
+    if not words:
+        return []
+    max_len = 0
+    for word in words:
+        if len(word) > max_len:
+            max_len = len(word)
 
-    pivot = words[0]
-    pivot_len = len(pivot)
+    count = [[] for _ in range(max_len + 1)]
 
-    left = []
-    right = []
-    for w in words[1:]:
-        if len(w) < pivot_len:
-            left.append(w)
-        if len(w) > pivot_len:
-            right.append(w)
+    for word in words:
+        count[len(word)].append(word)
 
-    middle = []
-    for w in words:
-        if len(w) == pivot_len:
-            middle.append(w)
+    sorted_words = []
+    for bucket in count:
+        sorted_words.extend(bucket)
 
-    return quick_sort(left) + middle + quick_sort(right)
+    return sorted_words
 
 
 def max_word_chain(filename):
@@ -30,7 +27,7 @@ def max_word_chain(filename):
     word_set = set(words)
     dp = {}
 
-    words = quick_sort(words)
+    words = counting_sort(words)
 
     max_chain = 1
     for word in words:
